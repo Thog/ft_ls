@@ -73,7 +73,7 @@ void	compute_args(int ac, char **av, t_args **args, t_array **lst)
 	t_args	*ret;
 	int		i;
 
-
+	ret = NULL;
 	paths = NULL;
 	i = 1;
 	if (ac == 1)
@@ -85,7 +85,6 @@ void	compute_args(int ac, char **av, t_args **args, t_array **lst)
 		{
 			if (prepare_args(av[i], ret, &paths, 0) && !*lst)
 				*lst = paths;
-
 			i++;
 		}
 	}
