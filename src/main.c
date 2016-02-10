@@ -34,6 +34,14 @@ void	compute_options(char c, t_args *args)
 		args->r = 1;
 	else if (c == 't')
 		args->t = 1;
+	else
+	{
+		ft_putstr_fd("ft_ls: invalid option -- ", 2);
+		ft_putchar_fd(c, 2);
+		ft_putstr_fd("\nusage: ls [-Ralrt] [file ...]\n", 2);
+		free(args);
+		exit(1);
+	}
 }
 
 int		prepare_args(char *str, t_args *args, t_array **lst, int option)
