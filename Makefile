@@ -16,7 +16,7 @@ CC = gcc
 
 NAME = ft_ls
 LIB = libft
-SRC = main.c
+SRC = main.c ft_ls.c
 SRCDIR = src
 OUTDIR = out
 SRCS = $(addprefix $(SRCDIR)/, $(SRC))

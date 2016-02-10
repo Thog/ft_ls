@@ -1,6 +1,27 @@
 
 #include "ft_ls.h"
 #include <stdio.h>
+
+t_array	*array_init(t_array *root, char *str)
+{
+	t_array		*result;
+	t_array		*tmp;
+
+	tmp = root;
+	if (!(result = (t_array*)malloc(sizeof(t_array))))
+		return (NULL);
+	result->data = str;
+	result->next = NULL;
+	if (tmp)
+	{
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = result;
+		return (root);
+	}
+	return (result);
+}
+
 void	compute_options(char c, t_args *args)
 {
 	if (c == 'l')
@@ -15,7 +36,7 @@ void	compute_options(char c, t_args *args)
 		args->t = 1;
 }
 
-int		prepare_args(char *str, t_args *args, t_list **lst, int option)
+int		prepare_args(char *str, t_args *args, t_array **lst, int option)
 {
 	if (*str == '-' && !option)
 	{
@@ -32,27 +53,29 @@ int		prepare_args(char *str, t_args *args, t_list **lst, int option)
 	}
 	else if (*str)
 	{
-		ft_lstadd(lst, ft_lstnew(str, ft_strlen(str)));
+		*lst = array_init(*lst, str);
 		return (1);
 	}
 	return (-1);
 }
 
-void	compute_args(int ac, char **av, t_args **args, t_list **lst)
+void	compute_args(int ac, char **av, t_args **args, t_array **lst)
 {
-	t_list	*paths;
+	t_array	*paths;
 	t_args	*ret;
 	int		i;
 
+
+	paths = NULL;
 	i = 1;
 	if (ac == 1)
-		paths = ft_lstnew(".", 1);
+		*lst = array_init(NULL, ".");
 	else
 	{
 		ret = (t_args*)malloc(sizeof(t_args));
 		while (i < ac)
 		{
-			if (!*lst && prepare_args(av[i], ret, &paths, 0))
+			if (prepare_args(av[i], ret, &paths, 0) && !*lst)
 				*lst = paths;
 
 			i++;
@@ -65,9 +88,9 @@ void	compute_args(int ac, char **av, t_args **args, t_list **lst)
 int		main(int ac, char **av)
 {
 	t_args		*args;
-	t_list		*paths;
+	t_array		*paths;
 
 	compute_args(ac, av, &args, &paths);
-		printf("%s\n", (char*)paths->content);
+	start_ls(args, paths);
 	return (0);
 }
