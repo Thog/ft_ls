@@ -12,7 +12,7 @@
 # include <grp.h>
 # include <unistd.h>
 # include <errno.h>
-# include <uuid/uuid.h>
+//# include <uuid/uuid.h>
 # include "libft.h"
 
 # define MAJOR(x)((int32_t)(((u_int32_t)(x) >> 24) & 0xff))
