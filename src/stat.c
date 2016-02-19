@@ -47,6 +47,14 @@ int		add_file(t_file **files, char *name, char *path, t_args *args)
 	return (1);
 }
 
+
+int		add_file_dir(t_file **files, struct dirent *file, char *path,
+		t_args *args)
+{
+	if (!file)
+		return (0);
+	return (add_file(files, file->d_name, path, args));
+}
 void	display_files(t_file *files, t_args *args, int is_dir)
 {
 	t_file	*tmp;
