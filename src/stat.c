@@ -52,7 +52,7 @@ void	display_files(t_file *files, t_args *args, int is_dir)
 	t_file	*tmp;
 
 	tmp = files;
-	//tmp = sort_stats(tmp, args);
+	tmp = sort_file(tmp, args);
 	if (args->l)
 		long_files_display(files, args, is_dir);
 	else
