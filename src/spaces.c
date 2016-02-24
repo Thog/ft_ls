@@ -1,30 +1,30 @@
 
 #include "ft_ls.h"
 
-static void	quick_check(t_space *space, t_file *file)
+static void		quick_check(t_space *space, t_file *file)
 {
 	char	*tmp;
 
 	tmp = ft_itoa(file->st_nlink);
 	space->link = (int)ft_strlen(tmp) > space->link ?
 		(int)ft_strlen(tmp) : space->link;
-	free(tmp);
+	//free(tmp);
 	tmp = ft_itoa(major(file->st_rdev));
 	space->maj = (int)ft_strlen(tmp) > space->maj ?
 		(int)ft_strlen(tmp) : space->maj;
-	free(tmp);
+	//free(tmp);
 	tmp = ft_itoa(minor(file->st_nlink));
 	space->min = (int)ft_strlen(tmp) > space->min ?
 		(int)ft_strlen(tmp) : space->min;
-	free(tmp);
+	//free(tmp);
 	tmp = ft_itoa(file->st_size);
 	space->size = (int)ft_strlen(tmp) > space->size ?
 		(int)ft_strlen(tmp) : space->size;
-	free(tmp);
+	//free(tmp);
 	space->total += file->st_blocks;
 }
 
-static void	get_spaces_sys(t_space *space, t_file *file)
+static void		get_spaces_sys(t_space *space, t_file *file)
 {
 	int		len;
 	char	*tmp;
@@ -56,12 +56,31 @@ static void	get_spaces_sys(t_space *space, t_file *file)
 	space->group = len > space->group ? len : space->group;
 }
 
-t_space		*get_spaces(t_args *args, t_file *files)
+static t_space	*init_spaces(void)
+{
+
+	t_space	*result;
+
+	if (!(result = (t_space*)malloc(sizeof(t_space))))
+		return (NULL);
+
+	result->total = 0;
+	result->maj = 0;
+	result->min = 0;
+	result->user = 0;
+	result->link = 0;
+	result->group = 0;
+	result->size = 0;
+	return (result);
+}
+
+
+t_space			*get_spaces(t_args *args, t_file *files)
 {
 	t_file	*tmp;
 	t_space	*space;
 
-	if (!(space = (t_space*)malloc(sizeof(t_space))))
+	if (!(space = init_spaces()))
 		return (NULL);
 	tmp = files;
 	while (tmp)

@@ -62,7 +62,7 @@ t_array		*array_init(t_array *root, char *data);
 t_file		*file_stat(char *name, char *path, t_args *arg);
 t_space		*get_spaces(t_args *args, t_file *file);
 int			add_file(t_file **files, char *name, char *path, t_args *args);
-int		add_file_dir(t_file **files, struct dirent *file, char *path,
+int			add_file_dir(t_file **files, struct dirent *file, char *path,
 		t_args *args);
 void		compute_args(int ac, char **av, t_args **args, t_array **lst);
 void		display_files(t_file *files, t_args *args, int is_dir);
