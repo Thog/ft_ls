@@ -12,7 +12,7 @@
 # include <grp.h>
 # include <unistd.h>
 # include <errno.h>
-//# include <uuid/uuid.h>
+# include <uuid/uuid.h>
 # include "libft.h"
 
 # define MAJOR(x)((int32_t)(((u_int32_t)(x) >> 24) & 0xff))
@@ -72,10 +72,11 @@ void		print_nbr(int nlink, int space);
 void		print_str(char *str, int space);
 void		print_majmin(t_file *file, t_space *spaces);
 void		print_permissions(t_file *file);
-void		print_date(time_t date);
+void		print_date(time_t *date);
 void		start_ls(t_args *args, t_array *paths);
 void		ft_error(char *str);
 int			cmp_alpha(t_file *file1, t_file *file2);
 int			cmp_time(t_file *file1, t_file *file2);
 t_file		*sort_file(t_file *lst, t_args *args);
+t_args		*init_args(void);
 #endif

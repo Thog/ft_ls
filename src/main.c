@@ -75,20 +75,16 @@ void	compute_args(int ac, char **av, t_args **args, t_array **lst)
 
 	ret = NULL;
 	paths = NULL;
-	ret = (t_args*)malloc(sizeof(t_args));
+	ret = init_args();
 	i = 1;
-	if (ac == 1)
-		*lst = array_init(NULL, ".");
-	else
+	while (i < ac)
 	{
-		while (i < ac)
-		{
-			if (prepare_args(av[i], ret, &paths, 0) && !*lst)
-				*lst = paths;
-			i++;
-		}
+		if (prepare_args(av[i], ret, &paths, 0) && !*lst)
+			*lst = paths;
+		i++;
 	}
-
+	if (!*lst)
+		*lst = array_init(NULL, ".");
 	*args = ret;
 }
 

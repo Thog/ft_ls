@@ -60,15 +60,15 @@ void	print_permissions(t_file *file)
 	ft_putstr("  ");
 }
 
-void	print_date(time_t date)
+void	print_date(time_t *date)
 {
 	char	*str1;
 	char	*str2;
 	time_t	actual_time;
 
 	actual_time = time(0);
-	str1 = ctime(&date);
-	if ((actual_time - 15778463) > date || actual_time < date)
+	str1 = ctime(date);
+	if ((actual_time - 15778463) > *date || actual_time < *date)
 	{
 		str2 = ft_strnew(6);
 		str2 = ft_strsub(str1, 20, 4);

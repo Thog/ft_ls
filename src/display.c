@@ -17,7 +17,7 @@ static void	long_file_display(t_file *file, t_space *spaces)
 		print_majmin(file, spaces);
 	else
 		print_nbr(file->st_size, spaces->size);
-	print_date(file->date);
+	print_date(&file->date);
 	ft_putendl(file->name);
 }
 
@@ -26,8 +26,8 @@ void	long_files_display(t_file *files, t_args *args, int is_dir)
 	t_file	*tmp;
 	t_space	*spaces;
 
-	spaces = get_spaces(args, files);
 	tmp = files;
+	spaces = get_spaces(args, files);
 	if (is_dir)
 	{
 		ft_putstr("total ");
@@ -37,7 +37,9 @@ void	long_files_display(t_file *files, t_args *args, int is_dir)
 	while (tmp)
 	{
 		if (!(args->a == 0 && tmp->name[0] == '.'))
+		{
 			long_file_display(tmp, spaces);
+		}
 		tmp = tmp->next;
 	}
 }

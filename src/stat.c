@@ -1,4 +1,5 @@
 #include "ft_ls.h"
+#include <stdio.h>
 
 t_file		*file_stat(char *name, char *path, t_args *arg)
 {
@@ -53,7 +54,8 @@ int		add_file_dir(t_file **files, struct dirent *file, char *path,
 {
 	if (!file)
 		return (0);
-	return (add_file(files, file->d_name, path, args));
+	int result =  (add_file(files, file->d_name, path, args));
+	return (result);
 }
 void	display_files(t_file *files, t_args *args, int is_dir)
 {
@@ -62,7 +64,7 @@ void	display_files(t_file *files, t_args *args, int is_dir)
 	tmp = files;
 	tmp = sort_file(tmp, args);
 	if (args->l)
-		long_files_display(files, args, is_dir);
+		long_files_display(tmp, args, is_dir);
 	else
 		simple_files_display(tmp, args);
 	/*if (args->R)
