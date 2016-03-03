@@ -46,7 +46,7 @@ void	compute_options(char c, t_args *args)
 
 int		prepare_args(char *str, t_args *args, t_array **lst, int option)
 {
-	if (*str == '-' && !option)
+	if (*str == '-' && *(str + 1) && !option)
 	{
 		return (prepare_args(str + 1, args, lst, 1));
 	}
