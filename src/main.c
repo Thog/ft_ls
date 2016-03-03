@@ -73,7 +73,6 @@ void	compute_args(int ac, char **av, t_args **args, t_array **lst)
 	t_args	*ret;
 	int		i;
 
-	ret = NULL;
 	paths = NULL;
 	ret = init_args();
 	i = 1;
@@ -93,6 +92,8 @@ int		main(int ac, char **av)
 	t_args		*args;
 	t_array		*paths;
 
+	args = NULL;
+	paths = NULL;
 	compute_args(ac, av, &args, &paths);
 	start_ls(args, paths);
 	return (0);

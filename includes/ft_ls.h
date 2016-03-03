@@ -58,6 +58,8 @@ typedef struct		s_space
 	int				maj;
 }					t_space;
 
+typedef struct		stat t_stat;
+
 t_array		*array_init(t_array *root, char *data);
 t_file		*file_stat(char *name, char *path, t_args *arg);
 t_space		*get_spaces(t_args *args, t_file *file);
@@ -79,4 +81,5 @@ int			cmp_alpha(t_file *file1, t_file *file2);
 int			cmp_time(t_file *file1, t_file *file2);
 t_file		*sort_file(t_file *lst, t_args *args);
 t_args		*init_args(void);
+int			count_digit(int i);
 #endif

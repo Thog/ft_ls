@@ -10,6 +10,19 @@ int		cmp_time(t_file *file1, t_file *file2)
 	return (file1->date < file2->date);
 }
 
+int		count_digit(int i)
+{
+	int result;
+
+	result = 0;
+	while(i)
+	{
+		i /= 10;
+		result++;
+	}
+	return (result);
+}
+
 t_args	*init_args(void)
 {
 	t_args *ret;

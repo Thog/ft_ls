@@ -3,23 +3,23 @@
 
 static void		quick_check(t_space *space, t_file *file)
 {
-	char	*tmp;
+	int		tmp;
 
-	tmp = ft_itoa(file->st_nlink);
-	space->link = (int)ft_strlen(tmp) > space->link ?
-		(int)ft_strlen(tmp) : space->link;
+	tmp = count_digit(file->st_nlink);
+	space->link = tmp > space->link ?
+		tmp : space->link;
 	//free(tmp);
-	tmp = ft_itoa(major(file->st_rdev));
-	space->maj = (int)ft_strlen(tmp) > space->maj ?
-		(int)ft_strlen(tmp) : space->maj;
+	tmp = count_digit(major(file->st_rdev));
+	space->maj = tmp > space->maj ?
+		tmp : space->maj;
 	//free(tmp);
-	tmp = ft_itoa(minor(file->st_nlink));
-	space->min = (int)ft_strlen(tmp) > space->min ?
-		(int)ft_strlen(tmp) : space->min;
+	tmp = count_digit(minor(file->st_nlink));
+	space->min = tmp > space->min ?
+		tmp : space->min;
 	//free(tmp);
-	tmp = ft_itoa(file->st_size);
-	space->size = (int)ft_strlen(tmp) > space->size ?
-		(int)ft_strlen(tmp) : space->size;
+	tmp = count_digit(file->st_size);
+	space->size = tmp > space->size ?
+		tmp : space->size;
 	//free(tmp);
 	space->total += file->st_blocks;
 }
@@ -33,24 +33,24 @@ static void		get_spaces_sys(t_space *space, t_file *file)
 	if (getpwuid(file->st_uid))
 	{
 		tmp = getpwuid(file->st_uid)->pw_name;
-		len = (int)ft_strlen(tmp);
+		len = ft_strlen(tmp);
 	}
 	else
 	{
 		tmp = ft_itoa(file->st_uid);
-		len = (int)ft_strlen(tmp);
+		len = ft_strlen(tmp);
 		free(tmp);
 	}
 	space->user = len > space->user ? len : space->user;
 	if (getgrgid(file->st_gid))
 	{
 		tmp = getgrgid(file->st_gid)->gr_name;
-		len = (int)ft_strlen(tmp);
+		len = ft_strlen(tmp);
 	}
 	else
 	{
 		tmp = ft_itoa(file->st_gid);
-		len = (int)ft_strlen(tmp);
+		len = count_digit(file->st_gid);
 		free(tmp);
 	}
 	space->group = len > space->group ? len : space->group;
@@ -58,12 +58,10 @@ static void		get_spaces_sys(t_space *space, t_file *file)
 
 static t_space	*init_spaces(void)
 {
-
 	t_space	*result;
 
 	if (!(result = (t_space*)malloc(sizeof(t_space))))
 		return (NULL);
-
 	result->total = 0;
 	result->maj = 0;
 	result->min = 0;

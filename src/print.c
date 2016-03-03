@@ -4,7 +4,7 @@ void	print_nbr(int nlink, int space)
 {
 	int		n;
 
-	n = space - ft_strlen(ft_itoa(nlink));
+	n = space - count_digit(nlink);
 	while (n-- > 0)
 		ft_putchar(' ');
 	ft_putnbr(nlink);
