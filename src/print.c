@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 11:51:54 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/04 11:51:56 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/04 16:24:59 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@ void	print_nbr(int nlink, int space)
 	int		n;
 
 	n = space - count_digit(nlink);
+	if (nlink == 0)
+		n--;
 	while (n-- > 0)
 		ft_putchar(' ');
 	ft_putnbr(nlink);
-	ft_putstr(" ");
+	ft_putchar(' ');
 }
 
 void	print_str(char *str, int space)
@@ -49,27 +51,6 @@ void	print_majmin(t_file *file, t_space *spaces)
 	while (min < spaces->min--)
 		ft_putchar(' ');
 	ft_putchar(' ');
-}
-
-void	print_permissions(t_file *file)
-{
-	ft_putchar((S_ISFIFO(file->st_mode)) ? 'p' : '\0');
-	ft_putchar((S_ISCHR(file->st_mode)) ? 'c' : '\0');
-	ft_putchar((S_ISDIR(file->st_mode)) ? 'd' : '\0');
-	ft_putchar((S_ISBLK(file->st_mode)) ? 'b' : '\0');
-	ft_putchar((S_ISREG(file->st_mode)) ? '-' : '\0');
-	ft_putchar((S_ISLNK(file->st_mode)) ? 'l' : '\0');
-	ft_putchar((S_ISSOCK(file->st_mode)) ? 's' : '\0');
-	ft_putchar((file->st_mode & S_IRUSR) ? 'r' : '-');
-	ft_putchar((file->st_mode & S_IWUSR) ? 'w' : '-');
-	ft_putchar((file->st_mode & S_IXUSR) ? 'x' : '-');
-	ft_putchar((file->st_mode & S_IRGRP) ? 'r' : '-');
-	ft_putchar((file->st_mode & S_IWGRP) ? 'w' : '-');
-	ft_putchar((file->st_mode & S_IXGRP) ? 'x' : '-');
-	ft_putchar((file->st_mode & S_IROTH) ? 'r' : '-');
-	ft_putchar((file->st_mode & S_IWOTH) ? 'w' : '-');
-	ft_putchar((file->st_mode & S_IXOTH) ? 'x' : '-');
-	ft_putstr("  ");
 }
 
 void	print_date(time_t *date)

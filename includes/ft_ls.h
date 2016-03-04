@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 12:25:12 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/04 13:22:03 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/04 15:17:12 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,4 +95,5 @@ t_file				*sort_file(t_file *lst, t_args *args);
 t_args				*init_args(void);
 int					count_digit(int i);
 void				display_multidir(char *str);
+void				put_permission(char c);
 #endif

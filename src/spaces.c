@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 11:51:34 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/04 11:59:39 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/04 16:18:22 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,7 @@ static void		get_spaces_sys(t_space *space, t_file *file)
 		len = ft_strlen(tmp);
 	}
 	else
-	{
-		tmp = ft_itoa(file->st_uid);
-		len = ft_strlen(tmp);
-		free(tmp);
-	}
+		len = count_digit(file->st_uid);
 	space->user = len > space->user ? len : space->user;
 	if (getgrgid(file->st_gid))
 	{

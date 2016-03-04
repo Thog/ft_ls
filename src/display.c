@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 11:51:22 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/04 13:19:01 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/04 15:16:57 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,11 @@ void		display_multidir(char *str)
 {
 	ft_putstr(str);
 	ft_putstr(":\n");
+}
+
+void		put_permission(char c)
+{
+	if (c == '\0')
+		return ;
+	ft_putchar(c);
 }
