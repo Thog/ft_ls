@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   spaces.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/03/04 11:51:34 by tguillem          #+#    #+#             */
+/*   Updated: 2016/03/04 11:59:39 by tguillem         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_ls.h"
 
@@ -8,19 +19,15 @@ static void		quick_check(t_space *space, t_file *file)
 	tmp = count_digit(file->st_nlink);
 	space->link = tmp > space->link ?
 		tmp : space->link;
-	//free(tmp);
 	tmp = count_digit(major(file->st_rdev));
 	space->maj = tmp > space->maj ?
 		tmp : space->maj;
-	//free(tmp);
 	tmp = count_digit(minor(file->st_nlink));
 	space->min = tmp > space->min ?
 		tmp : space->min;
-	//free(tmp);
 	tmp = count_digit(file->st_size);
 	space->size = tmp > space->size ?
 		tmp : space->size;
-	//free(tmp);
 	space->total += file->st_blocks;
 }
 
@@ -48,11 +55,7 @@ static void		get_spaces_sys(t_space *space, t_file *file)
 		len = ft_strlen(tmp);
 	}
 	else
-	{
-		tmp = ft_itoa(file->st_gid);
 		len = count_digit(file->st_gid);
-		free(tmp);
-	}
 	space->group = len > space->group ? len : space->group;
 }
 
@@ -71,7 +74,6 @@ static t_space	*init_spaces(void)
 	result->size = 0;
 	return (result);
 }
-
 
 t_space			*get_spaces(t_args *args, t_file *files)
 {

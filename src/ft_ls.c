@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ls.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/03/04 11:51:48 by tguillem          #+#    #+#             */
+/*   Updated: 2016/03/04 12:29:21 by tguillem         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_ls.h"
 #include <stdio.h>
 
@@ -30,10 +42,9 @@ static void			compute_files(t_args *args, t_array *files)
 	args->a = 1;
 	while (tmp)
 	{
-		add_file(&stats, tmp->data, "", args);
+		add_file(&stats, tmp->data, "");
 		tmp = tmp->next;
 	}
-
 	if (stats)
 		display_files(stats, args, 0);
 }
@@ -45,12 +56,12 @@ static void			compute_dir(t_args *args, t_file *dirs, int multi_dir)
 	int		first_file;
 
 	first_file = 1;
-	files = NULL;
 	while (dirs)
 	{
+		files = NULL;
 		dir = opendir(dirs->name);
 		while (add_file_dir(&files, readdir(dir), \
-					ft_strjoin(dirs->path, "/"), args))
+					ft_strjoin(dirs->path, "/")))
 			;
 		closedir(dir);
 		if (files)
@@ -58,14 +69,10 @@ static void			compute_dir(t_args *args, t_file *dirs, int multi_dir)
 			if (!first_file)
 				ft_putchar('\n');
 			if (multi_dir)
-			{
-				ft_putstr(dirs->name);
-				ft_putstr(":\n");
-			}
+				display_multidir(dirs->name);
 			first_file = 0;
 			display_files(files, args, 1);
 		}
-		files = NULL;
 		dirs = dirs->next;
 	}
 }
@@ -79,7 +86,7 @@ static void			prepare_dir(t_args *args, t_array *paths, int multi_dir)
 	dirs = NULL;
 	while (tmp)
 	{
-		add_file(&dirs, tmp->data, "", args);
+		add_file(&dirs, tmp->data, "");
 		tmp = tmp->next;
 	}
 	dirs = sort_file(dirs, args);

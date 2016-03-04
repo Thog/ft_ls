@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ls.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/03/04 12:25:12 by tguillem          #+#    #+#             */
+/*   Updated: 2016/03/04 13:22:03 by tguillem         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_LS_H
 # define FT_LS_H
 
@@ -17,10 +29,11 @@
 
 # define MAJOR(x)((int32_t)(((u_int32_t)(x) >> 24) & 0xff))
 # define MINOR(x)((int32_t)((x) & 0xffffff))
+
 typedef struct		s_args
 {
 	int				l;
-	int				R;
+	int				upper_r;
 	int				a;
 	int				r;
 	int				t;
@@ -58,28 +71,28 @@ typedef struct		s_space
 	int				maj;
 }					t_space;
 
-typedef struct		stat t_stat;
-
-t_array		*array_init(t_array *root, char *data);
-t_file		*file_stat(char *name, char *path, t_args *arg);
-t_space		*get_spaces(t_args *args, t_file *file);
-int			add_file(t_file **files, char *name, char *path, t_args *args);
-int			add_file_dir(t_file **files, struct dirent *file, char *path,
-		t_args *args);
-void		compute_args(int ac, char **av, t_args **args, t_array **lst);
-void		display_files(t_file *files, t_args *args, int is_dir);
-void		simple_files_display(t_file *files, t_args *args);
-void		long_files_display(t_file *files, t_args *args, int is_dir);
-void		print_nbr(int nlink, int space);
-void		print_str(char *str, int space);
-void		print_majmin(t_file *file, t_space *spaces);
-void		print_permissions(t_file *file);
-void		print_date(time_t *date);
-void		start_ls(t_args *args, t_array *paths);
-void		ft_error(char *str);
-int			cmp_alpha(t_file *file1, t_file *file2);
-int			cmp_time(t_file *file1, t_file *file2);
-t_file		*sort_file(t_file *lst, t_args *args);
-t_args		*init_args(void);
-int			count_digit(int i);
+t_array				*array_init(t_array *root, char *data);
+t_file				*file_stat(char *name, char *path);
+t_space				*get_spaces(t_args *args, t_file *file);
+int					add_file(t_file **files, char *name, char *path);
+int					add_file_dir(t_file **files, struct dirent *file,
+		char *path);
+void				compute_args(int ac, char **av, t_args **args,
+		t_array **lst);
+void				display_files(t_file *files, t_args *args, int is_dir);
+void				simple_files_display(t_file *files, t_args *args);
+void				long_files_display(t_file *files, t_args *args, int is_dir);
+void				print_nbr(int nlink, int space);
+void				print_str(char *str, int space);
+void				print_majmin(t_file *file, t_space *spaces);
+void				print_permissions(t_file *file);
+void				print_date(time_t *date);
+void				start_ls(t_args *args, t_array *paths);
+void				ft_error(char *str);
+int					cmp_alpha(t_file *file1, t_file *file2);
+int					cmp_time(t_file *file1, t_file *file2);
+t_file				*sort_file(t_file *lst, t_args *args);
+t_args				*init_args(void);
+int					count_digit(int i);
+void				display_multidir(char *str);
 #endif

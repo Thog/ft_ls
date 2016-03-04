@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/03/04 11:52:02 by tguillem          #+#    #+#             */
+/*   Updated: 2016/03/04 11:57:06 by tguillem         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_ls.h"
 
-static void	file_cpy(t_file **src, t_file *cpy)
+static void		file_cpy(t_file **src, t_file *cpy)
 {
 	(*src)->name = cpy->name;
 	(*src)->path = cpy->path;
@@ -13,7 +25,7 @@ static void	file_cpy(t_file **src, t_file *cpy)
 	(*src)->st_blocks = cpy->st_blocks;
 }
 
-static void	swap_file(t_file **file1, t_file **file2)
+static void		swap_file(t_file **file1, t_file **file2)
 {
 	t_file	tmp;
 
@@ -22,13 +34,13 @@ static void	swap_file(t_file **file1, t_file **file2)
 	file_cpy(file2, &tmp);
 }
 
-static void	reverse_sort(t_file **file)
+static void		reverse_sort(t_file **file)
 {
 	t_file	*tmp1;
 	t_file	*tmp2;
 	t_file	*tmp3;
 
-	tmp1= *file;
+	tmp1 = *file;
 	tmp2 = NULL;
 	while (tmp1)
 	{
@@ -39,7 +51,9 @@ static void	reverse_sort(t_file **file)
 	}
 	*file = tmp2;
 }
-static void	internal_sort(t_file **lst, int (*cmp)(t_file *file1, t_file *file2))
+
+static void		internal_sort(t_file **lst, int (*cmp)(t_file *file1, t_file
+			*file2))
 {
 	t_file *tmp1;
 	t_file *tmp2;
@@ -60,7 +74,7 @@ static void	internal_sort(t_file **lst, int (*cmp)(t_file *file1, t_file *file2)
 	}
 }
 
-t_file		*sort_file(t_file *lst, t_args *args)
+t_file			*sort_file(t_file *lst, t_args *args)
 {
 	t_file	*result;
 

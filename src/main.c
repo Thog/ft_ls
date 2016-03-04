@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/03/04 11:50:21 by tguillem          #+#    #+#             */
+/*   Updated: 2016/03/04 13:22:37 by tguillem         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_ls.h"
 #include <stdio.h>
@@ -27,13 +38,15 @@ void	compute_options(char c, t_args *args)
 	if (c == 'l')
 		args->l = 1;
 	else if (c == 'R')
-		args->R = 1;
+		args->upper_r = 1;
 	else if (c == 'a')
 		args->a = 1;
 	else if (c == 'r')
 		args->r = 1;
 	else if (c == 't')
 		args->t = 1;
+	else if (c == '1')
+		;
 	else
 	{
 		ft_putstr_fd("ft_ls: invalid option -- ", 2);

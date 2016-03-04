@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   display.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/03/04 11:51:22 by tguillem          #+#    #+#             */
+/*   Updated: 2016/03/04 13:19:01 by tguillem         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_ls.h"
 
@@ -6,7 +17,7 @@ static void	long_file_display(t_file *file, t_space *spaces)
 	print_permissions(file);
 	print_nbr(file->st_nlink, spaces->link);
 	if (getpwuid(file->st_uid))
-			print_str(getpwuid(file->st_uid)->pw_name, spaces->user);
+		print_str(getpwuid(file->st_uid)->pw_name, spaces->user);
 	else
 		print_str(ft_itoa(file->st_uid), spaces->user);
 	if (getgrgid(file->st_gid))
@@ -21,7 +32,7 @@ static void	long_file_display(t_file *file, t_space *spaces)
 	ft_putendl(file->name);
 }
 
-void	long_files_display(t_file *files, t_args *args, int is_dir)
+void		long_files_display(t_file *files, t_args *args, int is_dir)
 {
 	t_file	*tmp;
 	t_space	*spaces;
@@ -42,4 +53,10 @@ void	long_files_display(t_file *files, t_args *args, int is_dir)
 		}
 		tmp = tmp->next;
 	}
+}
+
+void		display_multidir(char *str)
+{
+	ft_putstr(str);
+	ft_putstr(":\n");
 }
