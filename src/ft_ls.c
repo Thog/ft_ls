@@ -47,6 +47,7 @@ static void			compute_files(t_args *args, t_array *files)
 	}
 	if (stats)
 		display_files(stats, args, 0);
+	destroy_files(stats);
 }
 
 static void			compute_dir(t_args *args, t_file *dirs, int multi_dir)
@@ -91,6 +92,7 @@ static void			prepare_dir(t_args *args, t_array *paths, int multi_dir)
 	}
 	dirs = sort_file(dirs, args);
 	compute_dir(args, dirs, multi_dir);
+	destroy_files(dirs);
 }
 
 void				start_ls(t_args *args, t_array *paths)
@@ -113,4 +115,5 @@ void				start_ls(t_args *args, t_array *paths)
 		write(1, "\n", 1);
 	if (dirs)
 		prepare_dir(args, dirs, paths->next != NULL);
+	destroy_array(files);
 }

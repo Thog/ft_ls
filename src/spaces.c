@@ -34,22 +34,15 @@ static void		quick_check(t_space *space, t_file *file)
 static void		get_spaces_sys(t_space *space, t_file *file)
 {
 	int		len;
-	char	*tmp;
 
 	len = 0;
 	if (getpwuid(file->st_uid))
-	{
-		tmp = getpwuid(file->st_uid)->pw_name;
-		len = ft_strlen(tmp);
-	}
+		len = ft_strlen(getpwuid(file->st_uid)->pw_name);
 	else
 		len = count_digit(file->st_uid);
 	space->user = len > space->user ? len : space->user;
 	if (getgrgid(file->st_gid))
-	{
-		tmp = getgrgid(file->st_gid)->gr_name;
-		len = ft_strlen(tmp);
-	}
+		len = ft_strlen(getgrgid(file->st_gid)->gr_name);
 	else
 		len = count_digit(file->st_gid);
 	space->group = len > space->group ? len : space->group;

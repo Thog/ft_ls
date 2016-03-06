@@ -21,7 +21,7 @@ t_file		*file_stat(char *name, char *path)
 	if (!(file = (t_file*)malloc(sizeof(t_file))))
 		return (NULL);
 	file->name = ft_strdup(name);
-	file->path = ft_strjoin(path, name);
+	file->path = ft_strjoin(path, file->name);
 	if (lstat(file->path, &file_stat) == -1)
 	{
 		ft_error(file->path);

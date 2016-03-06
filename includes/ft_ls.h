@@ -96,4 +96,6 @@ t_args				*init_args(void);
 int					count_digit(int i);
 void				display_multidir(char *str);
 void				put_permission(char c);
+void				destroy_array(t_array *array);
+void				destroy_files(t_file *files);
 #endif

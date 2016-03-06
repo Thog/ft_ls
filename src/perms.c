@@ -75,6 +75,10 @@ static char		*create_perms(int mode)
 
 void			print_permissions(t_file *file)
 {
-	ft_putstr(create_perms(file->st_mode));
+	char	*perms;
+
+	perms = create_perms(file->st_mode);
+	ft_putstr(perms);
 	ft_putstr("  ");
+	free(perms);
 }

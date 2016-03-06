@@ -53,6 +53,8 @@ void		long_files_display(t_file *files, t_args *args, int is_dir)
 		}
 		tmp = tmp->next;
 	}
+	if (spaces)
+		free(spaces);
 }
 
 void		display_multidir(char *str)

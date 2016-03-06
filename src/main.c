@@ -45,7 +45,7 @@ void	compute_options(char c, t_args *args)
 		args->r = 1;
 	else if (c == 't')
 		args->t = 1;
-	else if (c == '1')
+	else if (c == '1' || c == '-')
 		;
 	else
 	{
@@ -63,7 +63,7 @@ int		prepare_args(char *str, t_args *args, t_array **lst, int option)
 	{
 		return (prepare_args(str + 1, args, lst, 1));
 	}
-	else if (option)
+	else if (option == 1)
 	{
 		while (*str)
 		{
@@ -109,5 +109,8 @@ int		main(int ac, char **av)
 	paths = NULL;
 	compute_args(ac, av, &args, &paths);
 	start_ls(args, paths);
+	destroy_array(paths);
+	if (args)
+		free(args);
 	return (0);
 }
