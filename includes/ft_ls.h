@@ -98,4 +98,7 @@ void				display_multidir(char *str);
 void				put_permission(char c);
 void				destroy_array(t_array *array);
 void				destroy_files(t_file *files);
+void				prepare_dir(t_args *args, t_array *paths, int multi_dir);
+void				scan(char *str, t_array **files, t_array **dirs);
+void				recursive_display(t_file *files, t_args *args);
 #endif

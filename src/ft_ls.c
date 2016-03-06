@@ -13,7 +13,7 @@
 #include "ft_ls.h"
 #include <stdio.h>
 
-static void			scan(char *str, t_array **files, t_array **dirs)
+void				scan(char *str, t_array **files, t_array **dirs)
 {
 	DIR				*dir;
 	struct stat		tmp;
@@ -79,7 +79,7 @@ static void			compute_dir(t_args *args, t_file *dirs, int multi_dir)
 	}
 }
 
-static void			prepare_dir(t_args *args, t_array *paths, int multi_dir)
+void				prepare_dir(t_args *args, t_array *paths, int multi_dir)
 {
 	t_array	*tmp;
 	t_file	*dirs;

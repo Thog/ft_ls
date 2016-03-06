@@ -74,6 +74,8 @@ void		display_files(t_file *files, t_args *args, int is_dir)
 		long_files_display(tmp, args, is_dir);
 	else
 		simple_files_display(tmp, args);
+	if (args->upper_r)
+		recursive_display(files, args);
 }
 
 void		simple_files_display(t_file *files, t_args *args)
