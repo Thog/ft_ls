@@ -15,11 +15,12 @@
 
 static void			scan(char *str, t_array **files, t_array **dirs)
 {
-	DIR		*dir;
+	DIR				*dir;
+	struct stat		tmp;
 
 	if ((dir = opendir(str)) == NULL)
 	{
-		if (errno != ENOTDIR)
+		if (errno != ENOTDIR && lstat(str, &tmp) != 0)
 			ft_error(str);
 		else
 			*files = array_init(*files, str);

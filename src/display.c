@@ -12,6 +12,25 @@
 
 #include "ft_ls.h"
 
+static void	print_lnk(t_file * file)
+{
+	char	*link;
+	int		ret;
+
+	link = NULL;
+	if (S_ISLNK(file->st_mode))
+	{
+		if ((link = ft_strnew(1024)))
+		{
+			ret = readlink(file->path, link, 1024);
+			ft_putstr(" -> ");
+			ft_putstr(link);
+		}
+	}
+	if (link)
+		free(link);
+}
+
 static void	long_file_display(t_file *file, t_space *spaces)
 {
 	print_permissions(file);
@@ -29,7 +48,9 @@ static void	long_file_display(t_file *file, t_space *spaces)
 	else
 		print_nbr(file->st_size, spaces->size);
 	print_date(&file->date);
-	ft_putendl(file->name);
+	ft_putstr(file->name);
+	print_lnk(file);
+	ft_putchar('\n');
 }
 
 void		long_files_display(t_file *files, t_args *args, int is_dir)
