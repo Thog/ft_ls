@@ -40,7 +40,6 @@ static void			compute_files(t_args *args, t_array *files)
 
 	stats = NULL;
 	tmp = files;
-	args->a = 1;
 	while (tmp)
 	{
 		add_file(&stats, tmp->data, "");
