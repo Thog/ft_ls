@@ -55,25 +55,22 @@ void	print_majmin(t_file *file, t_space *spaces)
 
 void	print_date(time_t *date)
 {
-	char	*str1;
-	char	*str2;
+	t_date	*fdate;
 	time_t	actual_time;
 
 	actual_time = time(0);
-	str1 = ctime(date);
+	fdate = ft_date(date);
+	ft_putstr(fdate->month);
+	ft_putchar(' ');
+	if (ft_strlen(fdate->day_of_month) == 1)
+		ft_putchar(' ');
+	ft_putstr(fdate->day_of_month);
+	ft_putchar(' ');
 	if ((actual_time - 15778463) > *date || actual_time < *date)
 	{
-		str2 = ft_strnew(6);
-		str2 = ft_strsub(str1, 20, 4);
-		str1 = ft_strsub(str1, 4, 6);
-		str1 = ft_strjoin(str1, "  ");
-		str1 = ft_strjoin(str1, str2);
-		free(str2);
-	}
-	else
-		str1 = ft_strsub(str1, 4, 12);
-	str1[12] = '\0';
-	ft_putstr(str1);
+		ft_putchar(' ');
+		ft_putstr(fdate->year);
+	} else
+		ft_putstr(ft_strsub(fdate->time, 0, 5));
 	ft_putchar(' ');
-	free(str1);
 }
