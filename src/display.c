@@ -55,12 +55,12 @@ static void	long_file_display(t_file *file, t_space *spaces)
 
 void		long_files_display(t_file *files, t_args *args, int is_dir)
 {
-	t_file	*tmp;
-	t_space	*spaces;
+	t_file		*tmp;
+	t_space		*spaces;
 
 	tmp = files;
 	spaces = get_spaces(args, files);
-	if (is_dir)
+	if (need_total_print(files, args, is_dir))
 	{
 		ft_putstr("total ");
 		ft_putnbr(spaces->total);

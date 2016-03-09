@@ -48,3 +48,20 @@ t_args	*init_args(void)
 	ret->t = 0;
 	return (ret);
 }
+
+int		need_total_print(t_file *files, t_args *args, int multi_dir)
+{
+	int	count;
+
+	if (!multi_dir)
+		return (0);
+	count = 0;
+	while (files)
+	{
+		if (files->name[0] != '.')
+			count++;
+		files = files->next;
+	}
+
+	return (count != 0 || args->a);
+}

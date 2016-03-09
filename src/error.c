@@ -14,7 +14,7 @@
 
 void	ft_error(char *str)
 {
-	ft_putstr("ft_ls: ");
+	ft_putstr("ls: ");
 	ft_putstr(str);
 	ft_putstr(": ");
 	perror("");
