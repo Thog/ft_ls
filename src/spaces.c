@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 11:51:34 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/04 16:18:22 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/10 16:37:43 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@ static void		quick_check(t_space *space, t_file *file)
 {
 	int		tmp;
 
-	tmp = count_digit(file->st_nlink);
+	tmp = ft_count_digit(file->st_nlink, 10);
 	space->link = tmp > space->link ?
 		tmp : space->link;
-	tmp = count_digit(major(file->st_rdev));
+	tmp = ft_count_digit(major(file->st_rdev), 10);
 	space->maj = tmp > space->maj ?
 		tmp : space->maj;
-	tmp = count_digit(minor(file->st_nlink));
+	tmp = ft_count_digit(minor(file->st_nlink), 10);
 	space->min = tmp > space->min ?
 		tmp : space->min;
-	tmp = count_digit(file->st_size);
+	tmp = ft_count_digit(file->st_size, 10);
 	space->size = tmp > space->size ?
 		tmp : space->size;
 	space->total += file->st_blocks;
@@ -39,12 +39,12 @@ static void		get_spaces_sys(t_space *space, t_file *file)
 	if (getpwuid(file->st_uid))
 		len = ft_strlen(getpwuid(file->st_uid)->pw_name);
 	else
-		len = count_digit(file->st_uid);
+		len = ft_count_digit(file->st_uid, 10);
 	space->user = len > space->user ? len : space->user;
 	if (getgrgid(file->st_gid))
 		len = ft_strlen(getgrgid(file->st_gid)->gr_name);
 	else
-		len = count_digit(file->st_gid);
+		len = ft_count_digit(file->st_gid, 10);
 	space->group = len > space->group ? len : space->group;
 }
 

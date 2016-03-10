@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 11:51:54 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/10 09:04:50 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/10 16:38:08 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	print_nbr(int nlink, int space)
 {
 	int		n;
 
-	n = space - count_digit(nlink);
+	n = space - ft_count_digit(nlink, 10);
 	if (nlink == 0)
 		n--;
 	while (n-- > 0)
