@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 11:51:54 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/04 16:24:59 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/10 08:57:46 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,20 +53,20 @@ void	print_majmin(t_file *file, t_space *spaces)
 	ft_putchar(' ');
 }
 
-void	print_date(time_t *date)
+void	print_date(time_t date)
 {
 	t_date	*fdate;
 	time_t	actual_time;
 
 	actual_time = time(0);
-	fdate = ft_date(date);
+	fdate = ft_date(&date);
 	ft_putstr(fdate->month);
 	ft_putchar(' ');
 	if (ft_strlen(fdate->day_of_month) == 1)
 		ft_putchar(' ');
 	ft_putstr(fdate->day_of_month);
 	ft_putchar(' ');
-	if ((actual_time - 15778463) > *date || actual_time < *date)
+	if ((actual_time - 15778463) > date || actual_time < date)
 	{
 		ft_putchar(' ');
 		ft_putstr(fdate->year);

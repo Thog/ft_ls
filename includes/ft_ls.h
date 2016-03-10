@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 12:25:12 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/04 15:17:12 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/10 08:55:34 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct		s_file
 	char			*name;
 	char			*path;
 	time_t			date;
+	long			datensec;
 	mode_t			st_mode;
 	nlink_t			st_nlink;
 	uid_t			st_uid;
@@ -86,7 +87,7 @@ void				print_nbr(int nlink, int space);
 void				print_str(char *str, int space);
 void				print_majmin(t_file *file, t_space *spaces);
 void				print_permissions(t_file *file);
-void				print_date(time_t *date);
+void				print_date(time_t date);
 void				start_ls(t_args *args, t_array *paths);
 void				ft_error(char *str);
 int					cmp_alpha(t_file *file1, t_file *file2);

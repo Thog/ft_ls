@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 11:52:02 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/04 11:57:06 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/10 08:48:05 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@ static void		file_cpy(t_file **src, t_file *cpy)
 	(*src)->name = cpy->name;
 	(*src)->path = cpy->path;
 	(*src)->date = cpy->date;
+	(*src)->datensec = cpy->datensec;
 	(*src)->st_mode = cpy->st_mode;
 	(*src)->st_nlink = cpy->st_nlink;
 	(*src)->st_uid = cpy->st_uid;
 	(*src)->st_gid = cpy->st_gid;
 	(*src)->st_size = cpy->st_size;
 	(*src)->st_blocks = cpy->st_blocks;
+	(*src)->st_rdev = cpy->st_rdev;
 }
 
 static void		swap_file(t_file **file1, t_file **file2)
@@ -81,9 +83,10 @@ t_file			*sort_file(t_file *lst, t_args *args)
 	if (!lst)
 		return (NULL);
 	result = lst;
-	internal_sort(&result, &cmp_alpha);
 	if (args->t)
 		internal_sort(&result, &cmp_time);
+	else
+		internal_sort(&result, &cmp_alpha);
 	if (args->r)
 		reverse_sort(&result);
 	return (result);

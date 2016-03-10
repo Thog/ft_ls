@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 11:51:22 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/04 15:16:57 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/10 08:54:59 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	long_file_display(t_file *file, t_space *spaces)
 		print_majmin(file, spaces);
 	else
 		print_nbr(file->st_size, spaces->size);
-	print_date(&file->date);
+	print_date(file->date);
 	ft_putstr(file->name);
 	print_lnk(file);
 	ft_putchar('\n');

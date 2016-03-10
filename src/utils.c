@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 11:52:14 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/04 13:24:26 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/10 09:00:41 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,15 @@ int		cmp_alpha(t_file *file1, t_file *file2)
 
 int		cmp_time(t_file *file1, t_file *file2)
 {
-	return (file1->date < file2->date);
+	if (file1->date < file2->date)
+		return (1);
+	if (file2->date < file1->date)
+		return (-1);
+	if (file1->datensec < file2->datensec)
+		return (1);
+	if (file2->datensec < file1->datensec)
+		return (-1);
+	return (cmp_alpha(file1, file2));
 }
 
 int		count_digit(int i)
@@ -63,5 +71,5 @@ int		need_total_print(t_file *files, t_args *args, int multi_dir)
 		files = files->next;
 	}
 
-	return (count != 0 || args->a);
+	return (count || args->a);
 }

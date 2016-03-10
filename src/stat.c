@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 11:50:43 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/04 13:25:38 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/10 08:50:44 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ t_file		*file_stat(char *name, char *path)
 	file->st_blocks = file_stat.st_blocks;
 	file->st_rdev = file_stat.st_rdev;
 	file->date = file_stat.st_mtime;
+	file->datensec = file_stat.st_mtimespec.tv_nsec;
 	file->next = NULL;
 	return (file);
 }
