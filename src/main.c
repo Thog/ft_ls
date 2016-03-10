@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 11:50:21 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/04 13:22:37 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/10 13:30:35 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,7 @@ void	compute_options(char c, t_args *args)
 	else if (c == '1' || c == '-')
 		;
 	else
-	{
-		ft_putstr_fd("ft_ls: invalid option -- ", 2);
-		ft_putchar_fd(c, 2);
-		ft_putstr_fd("\nusage: ls [-Ralrt] [file ...]\n", 2);
-		free(args);
-		exit(1);
-	}
+		ls_usage(c, &args);
 }
 
 int		prepare_args(char *str, t_args *args, t_array **lst, int option)
