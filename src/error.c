@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 11:52:20 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/10 13:25:23 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/10 17:14:58 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	ft_error(char *str)
 {
-	ft_putstr("ls: ");
-	ft_putstr(str);
-	ft_putstr(": ");
+	ft_putstr_fd("ls: ", 2);
+	ft_putstr_fd(str, 2);
+	ft_putstr_fd(": ", 2);
 	perror("");
 }
 
