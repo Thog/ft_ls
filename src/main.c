@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 11:50:21 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/10 16:03:01 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/10 16:12:26 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	compute_args(int ac, char **av, t_args **args, t_array **lst)
 	*args = ret;
 }
 
-int		main(int ac, char **av)
+int			main(int ac, char **av)
 {
 	t_args		*args;
 	t_array		*paths;

@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 15:11:45 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/10 16:04:19 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/10 16:12:07 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,7 @@ static int				compute_options(char *str, t_args *args)
 	return (1);
 }
 
-
-static int			compute_flags(char *str, t_args *args)
+static int				compute_flags(char *str, t_args *args)
 {
 	int result;
 
@@ -64,12 +63,11 @@ static int			compute_flags(char *str, t_args *args)
 	return (result == 0);
 }
 
-int					prepare_args(char *str, t_args *args, t_array **lst, int force_file)
+int						prepare_args(char *str, t_args *args, t_array **lst,
+		int force_file)
 {
 	if (*str == '-' && *(str + 1) && !force_file)
-	{
 		return (compute_flags(str + 1, args));
-	}
 	else if (*str)
 	{
 		*lst = array_init(*lst, str);
