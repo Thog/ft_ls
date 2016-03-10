@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 11:51:48 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/10 13:21:49 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/10 15:45:57 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void				scan(char *str, t_array **files, t_array **dirs)
 
 	if ((dir = opendir(str)) == NULL)
 	{
-		if (errno != ENOTDIR && (lstat(str, &tmp) != 0 || !S_ISLNK(tmp.st_mode)))
+		if (errno != ENOTDIR && (lstat(str, &tmp) || !S_ISLNK(tmp.st_mode)))
 			ft_error(str);
 		else
 			*files = array_init(*files, str);
