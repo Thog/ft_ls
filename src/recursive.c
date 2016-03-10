@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   recursive.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/03/10 09:03:57 by tguillem          #+#    #+#             */
+/*   Updated: 2016/03/10 09:04:20 by tguillem         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_ls.h"
 
 void	display_dir_recursively(char *str, t_args *args)
@@ -31,8 +43,9 @@ void	recursive_display(t_file *files, t_args *args)
 	tmp = files;
 	while (tmp)
 	{
-		if (tmp->name && tmp->path && S_ISDIR(tmp->st_mode) && ft_strcmp("..", tmp->name) && ft_strcmp(".", tmp->name) && !(!args->a &&
-					tmp->name[0] == '.'))
+		if (tmp->name && tmp->path && S_ISDIR(tmp->st_mode) &&
+				ft_strcmp("..", tmp->name) && ft_strcmp(".", tmp->name) &&
+				!(!args->a && tmp->name[0] == '.'))
 			display_dir_recursively(tmp->path, args);
 		tmp = tmp->next;
 	}

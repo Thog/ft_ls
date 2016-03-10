@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 11:51:54 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/10 08:57:46 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/10 09:04:50 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ void	print_date(time_t date)
 	{
 		ft_putchar(' ');
 		ft_putstr(fdate->year);
-	} else
+	}
+	else
 		ft_putstr(ft_strsub(fdate->time, 0, 5));
 	ft_putchar(' ');
 }

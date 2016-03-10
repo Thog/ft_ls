@@ -6,13 +6,13 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 11:51:22 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/10 08:54:59 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/10 09:03:49 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-static void	print_lnk(t_file * file)
+static void	print_lnk(t_file *file)
 {
 	char	*link;
 	int		ret;

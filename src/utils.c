@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 11:52:14 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/10 09:00:41 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/10 09:06:29 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,11 @@ t_args	*init_args(void)
 	return (ret);
 }
 
-int		need_total_print(t_file *files, t_args *args, int multi_dir)
+int		need_total_print(t_file *files, t_args *args, int mdir)
 {
 	int	count;
 
-	if (!multi_dir)
+	if (!mdir)
 		return (0);
 	count = 0;
 	while (files)
@@ -70,6 +70,5 @@ int		need_total_print(t_file *files, t_args *args, int multi_dir)
 			count++;
 		files = files->next;
 	}
-
 	return (count || args->a);
 }
