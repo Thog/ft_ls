@@ -6,28 +6,34 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 11:51:48 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/10 15:45:57 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/10 18:20:58 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 #include <stdio.h>
 
-void				scan(char *str, t_array **files, t_array **dirs)
+static void			scan(char *str, t_array **files, t_array **dirs,
+		t_args *args)
 {
 	DIR				*dir;
 	struct stat		tmp;
+	int				stat_ret;
 
+	stat_ret = lstat(str, &tmp);
 	if ((dir = opendir(str)) == NULL)
 	{
-		if (errno != ENOTDIR && (lstat(str, &tmp) || !S_ISLNK(tmp.st_mode)))
+		if (errno != ENOTDIR && (stat_ret || !S_ISLNK(tmp.st_mode)))
 			ft_error(str);
 		else
 			*files = array_init(*files, str);
 	}
 	else
 	{
-		*dirs = array_init(*dirs, str);
+		if (S_ISLNK(tmp.st_mode) && args->l)
+			*files = array_init(*files, str);
+		else
+			*dirs = array_init(*dirs, str);
 		if (closedir(dir) == -1)
 			ft_error(str);
 	}
@@ -106,7 +112,7 @@ void				start_ls(t_args *args, t_array *paths)
 	tmp = paths;
 	while (tmp)
 	{
-		scan(tmp->data, &files, &dirs);
+		scan(tmp->data, &files, &dirs, args);
 		tmp = tmp->next;
 	}
 	if (files)

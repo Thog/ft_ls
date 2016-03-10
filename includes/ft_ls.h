@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 12:25:12 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/10 16:42:40 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/10 17:56:44 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ void				put_permission(char c);
 void				destroy_array(t_array *array);
 void				destroy_files(t_file *files);
 void				prepare_dir(t_args *args, t_array *paths, int multi_dir);
-void				scan(char *str, t_array **files, t_array **dirs);
 void				recursive_display(t_file *files, t_args *args);
 int					need_total_print(t_file *files, t_args *args, int mdir);
 void				ls_usage(char c, t_args **args);
