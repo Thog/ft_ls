@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 11:51:22 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/11 11:52:36 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/11 18:16:44 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,5 @@ void		display_files(t_file *files, t_args *args, int is_dir)
 		simple_files_display(tmp, args);
 	if (args->upper_r)
 		recursive_display(files, args);
+	destroy_files(tmp);
 }

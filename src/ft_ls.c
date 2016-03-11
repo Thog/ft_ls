@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 11:51:48 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/11 11:40:24 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/11 18:01:51 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ static void			compute_files(t_args *args, t_array *files)
 	}
 	if (stats)
 		display_files(stats, args, 0);
-	destroy_files(stats);
 }
 
 static void			compute_dir(t_args *args, t_file *dirs, int multi_dir)
@@ -122,4 +121,5 @@ void				start_ls(t_args *args, t_array *paths)
 	if (dirs)
 		prepare_dir(args, dirs, paths->next != NULL);
 	destroy_array(files);
+	destroy_array(dirs);
 }
