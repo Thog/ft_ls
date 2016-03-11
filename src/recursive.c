@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 09:03:57 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/10 09:04:20 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/11 09:40:55 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,7 @@ void	display_dir_recursively(char *str, t_args *args)
 			;
 		closedir(dir);
 		if (content)
-		{
 			display_files(content, args, 1);
-		}
 	}
 	else
 		ft_error(str);

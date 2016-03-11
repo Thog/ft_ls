@@ -6,18 +6,18 @@
 #    By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/03/04 11:53:01 by tguillem          #+#    #+#              #
-#    Updated: 2016/03/10 15:18:34 by tguillem         ###   ########.fr        #
+#    Updated: 2016/03/11 12:25:20 by tguillem         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS = -g -Wall -Wextra -Werror -I./includes
+CFLAGS = -O3 -Wall -Wextra -Werror -I./includes
 PRGFLAGS = -lft
 CC = gcc
 
 NAME = ft_ls
 LIB = libft
-SRC = main.c ft_ls.c error.c spaces.c stat.c print.c display.c sort.c utils.c \
-	  perms.c destroyer.c recursive.c parsing.c
+SRC = main.c ft_ls.c error.c spaces.c stat.c print.c display.c utils.c \
+	  perms.c destroyer.c recursive.c parsing.c sort_array.c sort_files.c
 SRCDIR = src
 OUTDIR = out
 SRCS = $(addprefix $(SRCDIR)/, $(SRC))

@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 15:11:45 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/10 16:12:07 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/11 12:45:05 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,13 @@ int						prepare_args(char *str, t_args *args, t_array **lst,
 	{
 		*lst = array_init(*lst, str);
 		return (1);
+	}
+	else if (!*str)
+	{
+		ft_putstr_fd("ls: fts_open: No such file or directory\n", 2);
+		free(args);
+		free(*lst);
+		exit(1);
 	}
 	return (-1);
 }

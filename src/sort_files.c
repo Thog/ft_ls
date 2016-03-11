@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   sort_files.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 11:52:02 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/10 16:41:42 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/11 12:25:30 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ static void		swap_file(t_file **file1, t_file **file2)
 	file_cpy(file2, &tmp);
 }
 
-static void		internal_sort(t_file **lst, int (*cmp)(t_file *file1, t_file
-			*file2))
+static void		internal_sort(t_file **lst, int (*cmp)(void *file1, void
+			*file2, int type))
 {
 	t_file *tmp1;
 	t_file *tmp2;
@@ -48,10 +48,8 @@ static void		internal_sort(t_file **lst, int (*cmp)(t_file *file1, t_file
 		tmp2 = tmp1->next;
 		while (tmp2)
 		{
-			if (cmp(tmp1, tmp2) > 0)
-			{
+			if (cmp(tmp1, tmp2, 1) > 0)
 				swap_file(&tmp1, &tmp2);
-			}
 			tmp2 = tmp2->next;
 		}
 		tmp1 = tmp1->next;

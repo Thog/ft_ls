@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 11:50:21 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/10 16:29:18 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/11 12:40:26 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int			main(int ac, char **av)
 	args = NULL;
 	paths = NULL;
 	compute_args(ac, av, &args, &paths);
+	paths = sort_array(paths);
 	start_ls(args, paths);
 	destroy_array(paths);
 	if (args)
