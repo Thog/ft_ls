@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 11:51:54 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/11 17:49:56 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/16 08:29:50 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	print_date(time_t date)
 		ft_putchar(' ');
 	ft_putstr(fdate->day_of_month);
 	ft_putchar(' ');
-	if ((actual_time - 15778463) > date || actual_time < date)
+	if ((actual_time - 15724800) > date || actual_time < date)
 	{
 		ft_putchar(' ');
 		ft_putstr(fdate->year);
