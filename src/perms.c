@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 15:44:22 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/04 16:29:37 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/16 09:03:44 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static char		*get_rwx(int mask)
 	if (mask == 1)
 		return ("--x");
 	else if (mask == 2)
-		return ("--x");
+		return ("-w-");
 	else if (mask == 3)
 		return ("-wx");
 	else if (mask == 4)
