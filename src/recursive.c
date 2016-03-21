@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 09:03:57 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/11 09:40:55 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/21 11:05:56 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	display_dir_recursively(char *str, t_args *args)
 	t_file	*content;
 	DIR		*dir;
 
-	content = NULL;
 	ft_putchar('\n');
 	ft_putstr(str);
 	ft_putstr(":\n");

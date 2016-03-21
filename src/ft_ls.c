@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 11:51:48 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/11 18:01:51 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/21 11:05:41 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,16 @@ static void			compute_dir(t_args *args, t_file *dirs, int multi_dir)
 	DIR		*dir;
 	t_file	*files;
 	int		first_file;
+	char	*path;
 
 	first_file = 1;
 	while (dirs)
 	{
+		path = !ft_strcmp(dirs->path, "/") ? ft_strdup(dirs->path) :
+			ft_strjoin(dirs->path, "/");
 		files = NULL;
 		dir = opendir(dirs->name);
-		while (add_file_dir(&files, readdir(dir), \
-					ft_strjoin(dirs->path, "/")))
+		while (add_file_dir(&files, readdir(dir), path))
 			;
 		closedir(dir);
 		if (files)
