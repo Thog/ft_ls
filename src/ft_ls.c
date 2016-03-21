@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 11:51:48 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/21 11:05:41 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/21 16:58:08 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,13 @@ static void			compute_dir(t_args *args, t_file *dirs, int multi_dir)
 		closedir(dir);
 		if (files)
 		{
-			if (!first_file)
-				ft_putchar('\n');
+			first_file = put_permission(first_file ? '\0' : '\n');
 			if (multi_dir)
 				display_multidir(dirs->name);
-			first_file = 0;
 			display_files(files, args, 1);
 		}
 		dirs = dirs->next;
+		ft_strdel(&path);
 	}
 }
 

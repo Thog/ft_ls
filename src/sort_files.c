@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 11:52:02 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/11 12:25:30 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/21 16:55:47 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ static void		swap_file(t_file **file1, t_file **file2)
 	file_cpy(file2, &tmp);
 }
 
-static void		internal_sort(t_file **lst, int (*cmp)(void *file1, void
-			*file2, int type))
+static void		internal_sort(t_file **lst, int revert,
+			int (*cmp)(void *file1, void *file2, int type, int revert))
 {
 	t_file *tmp1;
 	t_file *tmp2;
@@ -48,7 +48,7 @@ static void		internal_sort(t_file **lst, int (*cmp)(void *file1, void
 		tmp2 = tmp1->next;
 		while (tmp2)
 		{
-			if (cmp(tmp1, tmp2, 1) > 0)
+			if (cmp(tmp1, tmp2, 1, revert) > 0)
 				swap_file(&tmp1, &tmp2);
 			tmp2 = tmp2->next;
 		}
@@ -58,16 +58,11 @@ static void		internal_sort(t_file **lst, int (*cmp)(void *file1, void
 
 t_file			*sort_file(t_file *lst, t_args *args)
 {
-	t_file	*result;
-
 	if (!lst)
 		return (NULL);
-	result = lst;
 	if (args->t)
-		internal_sort(&result, &cmp_time);
+		internal_sort(&lst, args->r, &cmp_time);
 	else
-		internal_sort(&result, &cmp_alpha);
-	if (args->r)
-		internal_sort(&result, &cmp_revert);
-	return (result);
+		internal_sort(&lst, args->r, &cmp_alpha);
+	return (lst);
 }

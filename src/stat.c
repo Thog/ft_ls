@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 11:50:43 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/11 12:00:09 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/21 17:00:41 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,11 @@ int			add_file_dir(t_file **files, struct dirent *file, char *path)
 	return (add_file(files, file->d_name, path));
 }
 
-void		put_permission(char c)
+int			put_permission(char c)
 {
-	if (c == '\0')
-		return ;
-	ft_putchar(c);
+	if (c)
+		ft_putchar(c);
+	return (0);
 }
 
 void		simple_files_display(t_file *files, t_args *args)

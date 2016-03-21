@@ -6,13 +6,13 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 11:52:14 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/11 12:43:33 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/21 16:29:07 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-int		cmp_alpha(void *data1, void *data2, int type)
+int		cmp_alpha(void *data1, void *data2, int type, int revert)
 {
 	char	*str1;
 	char	*str2;
@@ -27,7 +27,7 @@ int		cmp_alpha(void *data1, void *data2, int type)
 		str1 = ((t_array*)data1)->data;
 		str2 = ((t_array*)data2)->data;
 	}
-	return (ft_strcmp(str1, str2));
+	return (revert ? ft_strcmp(str2, str1) : ft_strcmp(str1, str2));
 }
 
 int		cmp_revert(void *data1, void *data2, int type)
@@ -48,22 +48,24 @@ int		cmp_revert(void *data1, void *data2, int type)
 	return (ft_strcmp(str2, str1));
 }
 
-int		cmp_time(void *data1, void *data2, int type)
+int		cmp_time(void *data1, void *data2, int type, int revert)
 {
 	t_file	*file1;
 	t_file	*file2;
+	int		result;
 
+	result = revert ? -1 : 1;
 	file1 = ((t_file*)data1);
 	file2 = ((t_file*)data2);
 	if (file1->date < file2->date)
-		return (1);
+		return (result);
 	if (file2->date < file1->date)
-		return (-1);
+		return (-result);
 	if (file1->datensec < file2->datensec)
-		return (1);
+		return (result);
 	if (file2->datensec < file1->datensec)
-		return (-1);
-	return (cmp_alpha(file1, file2, type));
+		return (-result);
+	return (cmp_alpha(file1, file2, type, revert));
 }
 
 t_args	*init_args(void)

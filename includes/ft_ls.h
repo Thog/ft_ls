@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 12:25:12 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/11 12:40:36 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/21 17:00:25 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,14 +90,13 @@ void				print_permissions(t_file *file);
 void				print_date(time_t date);
 void				start_ls(t_args *args, t_array *paths);
 void				ft_error(char *str);
-int					cmp_alpha(void *data1, void *data2, int type);
-int					cmp_revert(void *file1, void *data2, int type);
-int					cmp_time(void *data1, void *data2, int type);
+int					cmp_alpha(void *data1, void *data2, int type, int revert);
+int					cmp_time(void *data1, void *data2, int type, int revert);
 t_file				*sort_file(t_file *lst, t_args *args);
 t_array				*sort_array(t_array *lst);
 t_args				*init_args(void);
 void				display_multidir(char *str);
-void				put_permission(char c);
+int					put_permission(char c);
 void				destroy_array(t_array *array);
 void				destroy_files(t_file *files);
 void				prepare_dir(t_args *args, t_array *paths, int multi_dir);

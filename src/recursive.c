@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 09:03:57 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/21 11:05:56 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/21 15:56:55 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,17 @@
 void	display_dir_recursively(char *str, t_args *args)
 {
 	t_file	*content;
+	char	*path;
 	DIR		*dir;
 
+	path = ft_strjoin(str, "/");
 	ft_putchar('\n');
 	ft_putstr(str);
 	ft_putstr(":\n");
 	if ((dir = opendir(str)))
 	{
 		content = NULL;
-		while (add_file_dir(&content, readdir(dir), ft_strjoin(str, "/")))
+		while (add_file_dir(&content, readdir(dir), path))
 			;
 		closedir(dir);
 		if (content)
@@ -31,6 +33,7 @@ void	display_dir_recursively(char *str, t_args *args)
 	}
 	else
 		ft_error(str);
+	ft_strdel(&path);
 }
 
 void	recursive_display(t_file *files, t_args *args)
