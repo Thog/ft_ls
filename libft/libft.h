@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tguillem <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 12:49:44 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/15 17:53:09 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/22 15:45:07 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,4 +121,9 @@ typedef struct		s_buff
 }					t_buff;
 
 int					get_next_line(int const fd, char **line);
+int					ft_parse_args(int ac, char **av, void *data,
+						int (*compute_options)(void*, char*));
+int					ft_usage(char *prg_name, char *usage, char illegal_char);
+char				*ft_error_return(char *str, char *code);
+char				*ft_get_filename(char *path);
 #endif
