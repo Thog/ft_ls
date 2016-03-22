@@ -6,16 +6,30 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 11:52:20 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/10 17:14:58 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/22 16:07:37 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void	ft_error(char *str)
+void	ft_error(t_file *file)
 {
 	ft_putstr_fd("ls: ", 2);
-	ft_putstr_fd(str, 2);
+	if (errno == ENOENT)
+		ft_putstr_fd(file->path, 2);
+	else
+		ft_putstr_fd(file->name, 2);
+	ft_putstr_fd(": ", 2);
+	perror("");
+}
+
+void	ft_error_str(char *str)
+{
+	ft_putstr_fd("ls: ", 2);
+	if (errno == ENOENT)
+		ft_putstr_fd(str, 2);
+	else
+		ft_putstr_fd(ft_get_filename(str), 2);
 	ft_putstr_fd(": ", 2);
 	perror("");
 }

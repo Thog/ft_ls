@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 12:25:12 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/21 17:00:25 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/22 16:03:42 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,8 @@ void				print_majmin(t_file *file, t_space *spaces);
 void				print_permissions(t_file *file);
 void				print_date(time_t date);
 void				start_ls(t_args *args, t_array *paths);
-void				ft_error(char *str);
+void				ft_error_str(char *str);
+void				ft_error(t_file *file);
 int					cmp_alpha(void *data1, void *data2, int type, int revert);
 int					cmp_time(void *data1, void *data2, int type, int revert);
 t_file				*sort_file(t_file *lst, t_args *args);

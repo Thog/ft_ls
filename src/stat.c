@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 11:50:43 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/21 17:00:41 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/22 15:56:36 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_file		*file_stat(char *name, char *path)
 	file->path = ft_strjoin(path, file->name);
 	if (lstat(file->path, &file_stat) == -1)
 	{
-		ft_error(file->path);
+		ft_error(file);
 		return (NULL);
 	}
 	file->st_mode = file_stat.st_mode;
