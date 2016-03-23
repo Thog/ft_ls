@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 15:11:45 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/11 13:26:39 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/03/23 09:03:55 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int				compute_options(char *str, t_args *args)
 	else if (*str == '-' && !*(str + 1))
 		return (0);
 	else if (*str == '1')
-		;
+		args->l = 0;
 	else
 		ls_usage(*str, &args);
 	return (1);
