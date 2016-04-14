@@ -6,11 +6,11 @@
 #    By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/07/21 12:17:37 by tguillem          #+#    #+#              #
-#    Updated: 2016/03/22 15:44:53 by tguillem         ###   ########.fr        #
+#    Updated: 2016/04/14 08:17:01 by tguillem         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS = -g -Wextra -Wall -Werror -I./
+CFLAGS = -g -Wextra -Wall -Werror -march=native -I./
 CC = gcc
 
 NAME = libft.a
@@ -28,18 +28,16 @@ SRC = ft_memset.c ft_bzero.c ft_strlen.c ft_strdup.c ft_strcpy.c ft_strncpy.c \
 	  ft_lstiter.c ft_lstsize.c ft_lstmap.c ft_iswhitespace.c ft_isblank.c \
 	  ft_strtrimch.c ft_strtrimcmp.c ft_islower.c ft_isupper.c ft_max.c \
 	  ft_putnbrbase.c ft_wstrlen.c ft_putwchar.c ft_putwstr.c ft_min.c \
-	  ft_itoa_base.c get_next_line.c ft_time.c ft_count_digit.c \
+	  ft_itoa_base.c get_next_line.c ft_time.c ft_count_digit.c ft_isstralnum.c\
 	  ft_putwchar_fd.c ft_putwstr_fd.c ft_printf/ft_nbrlen.c \
 	  ft_printf/ft_printf.c ft_printf/ft_printu.c \
 	  ft_printf/internal_printf.c ft_printf/manage_number.c \
 	  ft_printf/manage_specials.c ft_printf/manage_str.c \
 	  ft_printf/manage_str.c ft_printf/manage_wstr.c ft_printf/manager_base.c \
-	  ft_printf/parser.c ft_printf/utils.c ft_prgm.c ft_path.c
+	  ft_printf/parser.c ft_printf/utils.c ft_prgm.c ft_path.c ft_strsplitcmp.c
 
 OBJ = $(SRC:.c=.o)
 REMOVE = $(OBJ)
-
-all: $(NAME)
 
 %.o : %.c
 	@$(CC) $(CFLAGS) -o $@ -c $<
@@ -48,6 +46,8 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
+
+all: $(NAME)
 
 clean:
 	@/bin/rm -f $(REMOVE)

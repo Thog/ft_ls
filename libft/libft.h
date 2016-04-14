@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 12:49:44 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/22 15:45:07 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/04/14 07:51:20 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int					ft_isdigit(int c);
 int					ft_isalnum(int c);
 int					ft_isascii(int c);
 int					ft_isprint(int c);
+int					ft_isstralnum(char *str);
 
 typedef struct		s_list
 {
@@ -126,4 +127,6 @@ int					ft_parse_args(int ac, char **av, void *data,
 int					ft_usage(char *prg_name, char *usage, char illegal_char);
 char				*ft_error_return(char *str, char *code);
 char				*ft_get_filename(char *path);
+char				**ft_strsplitcmp(char const *s, int (*f)(int c));
+int					ft_error_retint(char *str, int code);
 #endif

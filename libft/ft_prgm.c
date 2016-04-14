@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/14 15:01:01 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/21 18:45:24 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/04/14 07:51:07 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,18 @@ static int			prepare_args(char *str, void *data,
 						int (*compute_options)(void*, char*))
 {
 	int		result;
+	int		tmp;
 
-	result = 2;
+	tmp = *str == '-';
+	result = 1;
+	while (tmp && (result = compute_options(data, ++str)))
 	{
-		while (*str == '-' && (result = compute_options(data,
-			++str)))
-			;
-		return (result == 0);
+		if (*str == '\0')
+			break ;
 	}
-	return (1);
+	if (!tmp)
+		return (0);
+	return (result);
 }
 
 int					ft_parse_args(int ac, char **av, void *data,
@@ -33,12 +36,14 @@ int					ft_parse_args(int ac, char **av, void *data,
 	int i;
 	int stop;
 
-	stop = 0;
+	stop = 1;
 	i = 0;
 	ac--;
 	av++;
-	while (i < ac && !stop)
+	while (i < ac && stop)
 		stop = prepare_args(av[i++], data, compute_options);
+	if (!stop)
+		i++;
 	return (i);
 }
 
@@ -51,6 +56,12 @@ int					ft_usage(char *prg_name, char *usage, char illegal_char)
 }
 
 char				*ft_error_return(char *str, char *code)
+{
+	ft_putstr_fd(str, 2);
+	return (code);
+}
+
+int					ft_error_retint(char *str, int code)
 {
 	ft_putstr_fd(str, 2);
 	return (code);
