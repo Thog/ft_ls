@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 15:44:22 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/16 09:03:44 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/04/14 08:25:25 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static char		*create_perms(int mode)
 	if (mode & S_ISGID)
 		*(result + 6) = (mode & S_IXGRP) ? 's' : 'S';
 	if (mode & S_ISVTX)
-		*(result + 9) = (mode & S_IXUSR) ? 't' : 'T';
+		*(result + 9) = (mode & S_IXOTH) ? 't' : 'T';
 	return (result);
 }
 
