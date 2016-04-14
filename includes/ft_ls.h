@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 12:25:12 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/22 16:03:42 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/04/14 09:20:06 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,6 @@ typedef struct		s_args
 	int				t;
 }					t_args;
 
-typedef struct		s_array
-{
-	char			*data;
-	struct s_array	*next;
-}					t_array;
-
 typedef struct		s_file
 {
 	char			*name;
@@ -72,7 +66,6 @@ typedef struct		s_space
 	int				maj;
 }					t_space;
 
-t_array				*array_init(t_array *root, char *data);
 t_file				*file_stat(char *name, char *path);
 t_space				*get_spaces(t_args *args, t_file *file);
 int					add_file(t_file **files, char *name, char *path);
@@ -98,7 +91,7 @@ t_array				*sort_array(t_array *lst);
 t_args				*init_args(void);
 void				display_multidir(char *str);
 int					put_permission(char c);
-void				destroy_array(t_array *array);
+void				destroy_elem(t_array *array);
 void				destroy_files(t_file *files);
 void				prepare_dir(t_args *args, t_array *paths, int multi_dir);
 void				recursive_display(t_file *files, t_args *args);

@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 11:51:48 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/22 16:04:30 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/04/14 09:21:00 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,6 @@ void				start_ls(t_args *args, t_array *paths)
 		write(1, "\n", 1);
 	if (dirs)
 		prepare_dir(args, dirs, paths->next != NULL);
-	destroy_array(files);
-	destroy_array(dirs);
+	destroy_elem(files);
+	destroy_elem(dirs);
 }

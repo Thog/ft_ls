@@ -6,31 +6,11 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 15:11:45 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/23 09:03:55 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/04/14 09:17:43 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
-
-t_array					*array_init(t_array *root, char *str)
-{
-	t_array		*result;
-	t_array		*tmp;
-
-	tmp = root;
-	if (!(result = (t_array*)malloc(sizeof(t_array))))
-		return (NULL);
-	result->data = str;
-	result->next = NULL;
-	if (tmp)
-	{
-		while (tmp->next)
-			tmp = tmp->next;
-		tmp->next = result;
-		return (root);
-	}
-	return (result);
-}
 
 static int				compute_options(char *str, t_args *args)
 {

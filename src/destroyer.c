@@ -6,13 +6,13 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 09:03:02 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/21 15:48:51 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/04/14 09:20:29 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void	destroy_array(t_array *array)
+void	destroy_elem(t_array *array)
 {
 	t_array	*to_del;
 	t_array	*tmp;
