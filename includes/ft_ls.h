@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 12:25:12 by tguillem          #+#    #+#             */
-/*   Updated: 2016/04/14 09:20:06 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/05/13 18:39:02 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,12 @@ int					add_file_dir(t_file **files, struct dirent *file,
 		char *path);
 int					prepare_args(char *str, t_args *args, t_array **lst,
 		int force_file);
-void				display_files(t_file *files, t_args *args, int is_dir);
-void				simple_files_display(t_file *files, t_args *args);
-void				long_files_display(t_file *files, t_args *args, int is_dir);
+void				display_files(t_file *files, t_args *args, int is_dir,
+	int arg);
+void				simple_files_display(t_file *files, t_args *args,
+	int arg);
+void				long_files_display(t_file *files, t_args *args, int is_dir,
+	int arg);
 void				print_nbr(int nlink, int space);
 void				print_str(char *str, int space);
 void				print_majmin(t_file *file, t_space *spaces);

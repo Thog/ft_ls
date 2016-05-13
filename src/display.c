@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 11:51:22 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/21 15:52:04 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/05/13 18:41:57 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	long_file_display(t_file *file, t_space *spaces)
 	ft_putchar('\n');
 }
 
-void		long_files_display(t_file *files, t_args *args, int is_dir)
+void		long_files_display(t_file *files, t_args *args, int is_dir, int arg)
 {
 	t_file		*tmp;
 	t_space		*spaces;
@@ -68,7 +68,7 @@ void		long_files_display(t_file *files, t_args *args, int is_dir)
 	}
 	while (tmp)
 	{
-		if (!(args->a == 0 && tmp->name[0] == '.'))
+		if (!(args->a == 0 && tmp->name[0] == '.') || arg)
 		{
 			long_file_display(tmp, spaces);
 		}
@@ -84,16 +84,16 @@ void		display_multidir(char *str)
 	ft_putstr(":\n");
 }
 
-void		display_files(t_file *files, t_args *args, int is_dir)
+void		display_files(t_file *files, t_args *args, int is_dir, int arg)
 {
 	t_file	*tmp;
 
 	tmp = files;
 	tmp = sort_file(tmp, args);
 	if (args->l)
-		long_files_display(tmp, args, is_dir);
+		long_files_display(tmp, args, is_dir, arg);
 	else
-		simple_files_display(tmp, args);
+		simple_files_display(tmp, args, arg);
 	if (args->upper_r)
 		recursive_display(files, args);
 	destroy_files(tmp);

@@ -6,7 +6,7 @@
 /*   By: tguillem <tguillem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 11:50:43 by tguillem          #+#    #+#             */
-/*   Updated: 2016/03/22 15:56:36 by tguillem         ###   ########.fr       */
+/*   Updated: 2016/05/13 18:35:04 by tguillem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,14 @@ int			put_permission(char c)
 	return (0);
 }
 
-void		simple_files_display(t_file *files, t_args *args)
+void		simple_files_display(t_file *files, t_args *args, int arg)
 {
 	t_file	*tmp;
 
 	tmp = files;
 	while (tmp)
 	{
-		if (!(args->a == 0 && tmp->name[0] == '.'))
+		if (!(args->a == 0 && tmp->name[0] == '.') || arg)
 		{
 			ft_putendl(tmp->name);
 		}
